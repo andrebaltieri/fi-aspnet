@@ -20,6 +20,8 @@ namespace fi
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            MyConfig.Teste = Configuration["teste"];
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -56,5 +58,12 @@ namespace fi
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
+    }
+
+
+    public static class MyConfig
+    {
+        public static string Teste { get; set; }
     }
 }
